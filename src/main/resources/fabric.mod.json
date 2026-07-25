@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "loothelper",
+  "version": "${version}",
+  "name": "LootHelper",
+  "description": "Автоматизация сбора лута, визуализация и защита.",
+  "authors": ["DarkAngel6734"],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.loothelper.LootHelper"
+    ]
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.4",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
