@@ -1,7 +1,9 @@
 package net.loothelper;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.loothelper.command.JdkCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,13 +13,17 @@ public class LootHelper implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        LOGGER.info("Инициализация мода LootHelper v1.0.0...");
+        LOGGER.info("LootHelper v1.0.0 успешно запущен!");
 
-        // Главный цикл обновлений
+        // Регистрация команд /jdk
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
+            JdkCommand.register(dispatcher);
+        });
+
+        // Главный цикл тиков
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player == null || client.world == null) return;
-            
-            // Здесь вызывается логика активных модулей
+            // Инициализация модулей AutoWardenLoot, CartLoot, AutoDrop, Telegram Notifier
         });
     }
 }
